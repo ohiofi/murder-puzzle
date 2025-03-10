@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic Grid Puzzle</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Logic Grid Puzzle</h1>
+    <label for="seedInput">Enter a seed number:</label>
+    <input type="number" id="seedInput">
+    <button onclick="startGame()">Start Game</button>
+    
+    <div id="gameControls" style="display: none;">
+        <button onclick="getHint()">Get a Hint</button>
+        <button onclick="showSolveInputs()">Solve the Puzzle</button>
+        
+        <div id="solveInputs" style="display: none;">
+            <label for="suspectInput">Suspect:</label>
+            <input type="text" id="suspectInput">
+            <label for="weaponInput">Weapon:</label>
+            <input type="text" id="weaponInput">
+            <label for="locationInput">Location:</label>
+            <input type="text" id="locationInput">
+            <button onclick="solvePuzzle()">Submit Solution</button>
+        </div>
+    </div>
+    
+    <div id="output"></div>
+    
+    <script>
+
+
+        function startGame() {
+            const seed = document.getElementById("seedInput").value;
+            if (!seed) {
+                alert("Please enter a seed number.");
+                return;
+            }
+            game = new LogicGridPuzzle(seed);
+            document.getElementById("gameControls").style.display = "block";
+            document.getElementById("output").innerHTML += "<p>Game started!</p>";
+        }
+
+        function getHint() {
+            if (!game) {
+                alert("Start the game first!");
+                return;
+            }
+            let hint = game.generateHint();
+            game.hints.push(hint.details);
+            document.getElementById("output").innerHTML += `<p>Hint #${game.hintNumber}: ${hint.text}</p>`;
+            game.hintNumber++;
+        }
+
+        function showSolveInputs() {
+            document.getElementById("solveInputs").style.display = "block";
+        }
+
+        function solvePuzzle() {
+            if (!game) {
+                alert("Start the game first!");
+                return;
+            }
+            let suspect = document.getElementById("suspectInput").value;
+            let weapon = document.getElementById("weaponInput").value;
+            let location = document.getElementById("locationInput").value;
+            
+            let murderer = game.solution.find(item => item.isMurderer);
+            let result = (murderer.suspect.toLowerCase() === suspect.toLowerCase() &&
+                          murderer.weapon.toLowerCase() === weapon.toLowerCase() &&
+                          murderer.location.toLowerCase() === location.toLowerCase())
+                          ? "Congratulations, you solved the puzzle!"
+                          : `Oops, wrong answer! The correct solution was: ${murderer.suspect} with the ${murderer.weapon} in the ${murderer.location}.`;
+            
+            document.getElementById("output").innerHTML += `<p>${result}</p>`;
+        }
+    </script>
+</body>
+</html>
