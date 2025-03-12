@@ -1,4 +1,5 @@
 let game;
+const emojis = ['', '✅', '❌', '❔'];
 document.getElementById('datepicker').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
 
 Date.prototype.toDateInputValue = (function() {
@@ -9,12 +10,20 @@ Date.prototype.toDateInputValue = (function() {
 
 document.getElementById('datepicker').value = new Date().toDateInputValue();
 
+document.querySelectorAll('.gridCell').forEach(cell => {
+  cell.addEventListener('click', () => {
+      let currentEmoji = cell.innerText;
+      let nextIndex = (emojis.indexOf(currentEmoji) + 1) % emojis.length;
+      cell.innerText = emojis[nextIndex];
+  });
+});
+
 function loadGame() {
     let datepicker = document.getElementById("datepicker");
-    game = new LogicGridPuzzle(datepicker.valueAsDate);
+    game = new LogicGridPuzzle(new Date(getDatePickerAsString()));
     console.log(game)
     
-    document.getElementById("gameControls").style.display = "block";
+    //document.getElementById("gameControls").style.display = "block";
     document.getElementById("output").innerHTML = game.playGame();
 }
 
@@ -26,15 +35,15 @@ function getDatePickerAsString() {
     return curr_month + "/" + curr_date + "/" + curr_year;
   }
 
-function getHint() {
+function getClue() {
     if (!game) {
         alert("Start the game first!");
         return;
     }
-    let hint = game.generateHint();
-    game.hints.push(hint.details);
-    document.getElementById("output").innerHTML += `<p>Hint #${game.hintNumber}: ${hint.text}</p>`;
-    game.hintNumber++;
+    let clue = game.generateClue();
+    game.clues.push(clue.details);
+    document.getElementById("output").innerHTML += `<p>Clue #${game.clueNumber}: ${clue.text}</p>`;
+    game.clueNumber++;
 }
 
 function showSolveInputs() {

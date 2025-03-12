@@ -6,8 +6,8 @@ class LogicGridPuzzle {
         this.weapons = ["Dagger", "Gun", "Rope", "Knife"];
         this.locations = ["Store", "Library", "Theater", "Museum"];
         this.solution = this.generateSolution(daysSinceEpoch);
-        this.hints = [];
-        this.hintNumber = 1;
+        this.clues = [];
+        this.clueNumber = 1;
     }
 
     shuffleArray(array, seed) {
@@ -36,35 +36,35 @@ class LogicGridPuzzle {
         return solution;
     }
 
-    getDirectHint() {
-        let hint = {};
+    getDirectClue() {
+        let clue = {};
         let category = ["suspect/location", "suspect/weapon", "weapon/location", "murderer"][Math.floor(Math.random() * 4)];
         let selected = this.solution[Math.floor(Math.random() * this.solution.length)];
 
         switch (category) {
             case "suspect/location":
-                hint.text = `${selected.suspect} was at the ${selected.location}.`;
-                hint.details = [selected.suspect, selected.location];
+                clue.text = `${selected.suspect} was at the ${selected.location}.`;
+                clue.details = [selected.suspect, selected.location];
                 break;
             case "suspect/weapon":
-                hint.text = `${selected.suspect} had the ${selected.weapon}.`;
-                hint.details = [selected.suspect, selected.weapon];
+                clue.text = `${selected.suspect} had the ${selected.weapon}.`;
+                clue.details = [selected.suspect, selected.weapon];
                 break;
             case "weapon/location":
-                hint.text = `The ${selected.weapon} was at the ${selected.location}.`;
-                hint.details = [selected.weapon, selected.location];
+                clue.text = `The ${selected.weapon} was at the ${selected.location}.`;
+                clue.details = [selected.weapon, selected.location];
                 break;
             case "murderer":
                 let murderer = this.solution.find(item => item.isMurderer);
-                hint.text = `${murderer.suspect} was the murderer.`;
-                hint.details = [murderer.suspect, "was the murderer"];
+                clue.text = `${murderer.suspect} was the murderer.`;
+                clue.details = [murderer.suspect, "was the murderer"];
                 break;
         }
-        return hint;
+        return clue;
     }
 
-    getIndirectHint() {
-        let hint = {};
+    getIndirectClue() {
+        let clue = {};
         let category = ["suspect/location", "suspect/weapon", "weapon/location", "murderer"][Math.floor(Math.random() * 4)];
         let selected = this.solution[Math.floor(Math.random() * this.solution.length)];
 
@@ -72,32 +72,32 @@ class LogicGridPuzzle {
             case "suspect/location":
                 let otherLocations = this.locations.filter(loc => loc !== selected.location);
                 let location = otherLocations[Math.floor(Math.random() * otherLocations.length)];
-                hint.text = `${selected.suspect} was NOT at the ${location}.`;
-                hint.details = [selected.suspect, `not ${location}`];
+                clue.text = `${selected.suspect} was NOT at the ${location}.`;
+                clue.details = [selected.suspect, `not ${location}`];
                 break;
             case "suspect/weapon":
                 let otherWeapons = this.weapons.filter(wpn => wpn !== selected.weapon);
                 let weapon = otherWeapons[Math.floor(Math.random() * otherWeapons.length)];
-                hint.text = `${selected.suspect} did NOT have the ${weapon}.`;
-                hint.details = [selected.suspect, `not ${weapon}`];
+                clue.text = `${selected.suspect} did NOT have the ${weapon}.`;
+                clue.details = [selected.suspect, `not ${weapon}`];
                 break;
             case "weapon/location":
                 let otherLocs = this.locations.filter(loc => loc !== selected.location);
                 let wrongLocation = otherLocs[Math.floor(Math.random() * otherLocs.length)];
-                hint.text = `The ${selected.weapon} was NOT found at the ${wrongLocation}.`;
-                hint.details = [selected.weapon, `not ${wrongLocation}`];
+                clue.text = `The ${selected.weapon} was NOT found at the ${wrongLocation}.`;
+                clue.details = [selected.weapon, `not ${wrongLocation}`];
                 break;
             case "murderer":
                 let innocent = this.solution.find(item => !item.isMurderer);
-                hint.text = `${innocent.suspect} was NOT the murderer.`;
-                hint.details = [innocent.suspect, "not murderer"];
+                clue.text = `${innocent.suspect} was NOT the murderer.`;
+                clue.details = [innocent.suspect, "not murderer"];
                 break;
         }
-        return hint;
+        return clue;
     }
 
-    generateHint() {
-        return Math.random() < 1 / 15 * this.hintNumber ? this.getDirectHint() : this.getIndirectHint();
+    generateClue() {
+        return Math.random() < 1 / 15 * this.clueNumber ? this.getDirectClue() : this.getIndirectClue();
     }
 
     playGame() {
@@ -110,16 +110,16 @@ class LogicGridPuzzle {
         // console.log("Weapons:", this.weapons);
         // console.log("Locations:", this.locations);
         // while (true) {
-        //     let choice = prompt("What would you like to do?\n1. Get a hint\n2. Solve the puzzle");
+        //     let choice = prompt("What would you like to do?\n1. Get a clue\n2. Solve the puzzle");
         //     if (choice === "1") {
-        //         let nextHint = this.generateHint();
+        //         let nextClue = this.generateClue();
         //         for (let i = 0; i < 50; i++) {
-        //             if (!this.hints.includes(nextHint.details)) break;
-        //             nextHint = this.generateHint();
+        //             if (!this.clues.includes(nextClue.details)) break;
+        //             nextClue = this.generateClue();
         //         }
-        //         this.hints.push(nextHint.details);
-        //         console.log(`Hint #${this.hintNumber}: ${nextHint.text}`);
-        //         this.hintNumber++;
+        //         this.clues.push(nextClue.details);
+        //         console.log(`Clue #${this.clueNumber}: ${nextClue.text}`);
+        //         this.clueNumber++;
         //     } else if (choice === "2") {
         //         this.finalGuess();
         //         break;
