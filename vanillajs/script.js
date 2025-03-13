@@ -1,5 +1,5 @@
 let game;
-const emojis = ['', '✅', '❌', '❔'];
+const emojis = ['✅', '❌', '❔',''];
 document.getElementById('datepicker').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
 
 Date.prototype.toDateInputValue = (function() {
@@ -12,8 +12,21 @@ document.getElementById('datepicker').value = new Date().toDateInputValue();
 
 document.querySelectorAll('.gridCell').forEach(cell => {
   cell.addEventListener('click', () => {
+      let row = cell.getAttribute('data-row');
+      let col = cell.getAttribute('data-col');
       let currentEmoji = cell.innerText;
       let nextIndex = (emojis.indexOf(currentEmoji) + 1) % emojis.length;
+      if(emojis[nextIndex] == '✅' || currentEmoji == '✅'){
+        document.querySelectorAll('.gridCell').forEach(otherCell => {
+          if (otherCell.getAttribute('data-row') === row || otherCell.getAttribute('data-col') === col) {
+            if(emojis[nextIndex] == '✅' && otherCell.innerText == ''){
+              otherCell.innerText = '✖️';
+            } else if(currentEmoji == '✅' && otherCell.innerText == '✖️'){
+              otherCell.innerText = ''
+            }
+          }
+        });
+      }
       cell.innerText = emojis[nextIndex];
   });
 });

@@ -24,133 +24,176 @@
 
 <body>
     <div class="container">
-        <h1>Logic Grid Puzzle</h1>
-        <div class="float-right">
-            <!-- <button id="prevButton" class="btn btn-xs bg-dark" >  </button> -->
-            <a onclick="previousDay()" class="text-body">&lt;&lt;&lt;</a>
-            <label for="datepicker" class="text-body">Date:</label>
-            <input type="date" id="datepicker" name="datepicker" class="text-body" onchange="setPuzzleDate()"
-                onkeydown="setPuzzleDate()" />
+        <div class="container">
+            <div class="row">
+                <h1>Logic Grid Puzzle</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 order-lg-last">
+                    <!-- <button id="prevButton" class="btn btn-xs bg-dark" >  </button> -->
+                    <a onclick="previousDay()" class="text-body">&lt;&lt;&lt;</a>
+                    <label for="datepicker" class="text-body">Date:</label>
+                    <input type="date" id="datepicker" name="datepicker" class="text-body" onchange="setPuzzleDate()"
+                        onkeydown="setPuzzleDate()" />
+                </div>
+
+                <div class="col-lg-8">
+                    <ul class="nav nav-tabs nav-fill">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#suspects">Suspects</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#weapons">Weapons</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#locations">Locations</a></li>
+                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#solve">Solve The Puzzle</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="row border-bottom m-4">
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <h3>HOME</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore
+                            et
+                            dolore magna aliqua.</p>
+                    </div>
+                    <div id="suspects" class="tab-pane fade">
+                        <h3>Suspects</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip e ea
+                            commodo
+                            consequat.
+                        </p>
+                    </div>
+                    <div id="weapons" class="tab-pane fade">
+                        <h3>Weapons</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip e ea
+                            commodo
+                            consequat.
+                        </p>
+                    </div>
+                    <div id="locations" class="tab-pane fade">
+                        <h3>Locations</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium,
+                            totam rem
+                            aperiam.</p>
+                    </div>
+                    <div id="solve" class="tab-pane fade">
+                        <h3>Solve The Puzzle</h3>
+                        <p>
+                        <div id="solveInputs">
+                            <label for="suspectInput">Suspect:</label>
+                            <input type="text" id="suspectInput" />
+                            <label for="weaponInput">Weapon:</label>
+                            <input type="text" id="weaponInput" />
+                            <label for="locationInput">Location:</label>
+                            <input type="text" id="locationInput" />
+                            <button onclick="solvePuzzle()">Submit Solution</button>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row m-4">
+                <div class="col col-lg-6">
+                    <button onclick="getClue()">Get a Clue</button>
+                    <div id="output"></div>
+                </div>
+                <div class="col col-lg-6">
+                    <div class="gridParent">
+                        <div class="div1 horizontal-label text-secondary"> Suspects </div>
+                        <div class="div2 horizontal-label text-secondary"> Locations </div>
+                        <div class="div3 vertical-label text-secondary"> Weapons </div>
+                        <div class="div4 vertical-label text-secondary"> Locations </div>
+                        <div class="div5 squareCell suspectNameLabel"> Alice</div>
+                        <div class="div6 squareCell suspectNameLabel"> Bobby</div>
+                        <div class="div7 squareCell suspectNameLabel"> Carol</div>
+                        <div class="div8 squareCell suspectNameLabel"> Danny</div>
+                        <div class=" div9 squareCell "> </div>
+                        <div class="div10 squareCell "> </div>
+                        <div class="div11 squareCell "> </div>
+                        <div class="div12 squareCell "> </div>
+                        <div class="div13 squareCell "> </div>
+                        <div class="div14 squareCell gridCell border-top-dark border-left-dark" data-row="r1"
+                            data-col="c1">
+                        </div>
+                        <div class="div15 squareCell gridCell border-top-dark" data-row="r1" data-col="c2"> </div>
+                        <div class="div16 squareCell gridCell border-top-dark" data-row="r1" data-col="c3"> </div>
+                        <div class="div17 squareCell gridCell border-top-dark border-right-dark" data-row="r1"
+                            data-col="c4">
+                        </div>
+                        <div class="div18 squareCell gridCell border-top-dark" data-row="r9" data-col="c9"> </div>
+                        <div class="div19 squareCell gridCell border-top-dark" data-row="r9" data-col="c10"> </div>
+                        <div class="div20 squareCell gridCell border-top-dark" data-row="r9" data-col="c11"> </div>
+                        <div class="div21 squareCell gridCell border-top-dark border-right-dark" data-row="r9"
+                            data-col="c12">
+                        </div>
+                        <div class="div22 squareCell "> </div>
+                        <div class="div23 squareCell gridCell border-left-dark" data-row="r2" data-col="c1"> </div>
+                        <div class="div24 squareCell gridCell" data-row="r2" data-col="c2"> </div>
+                        <div class="div25 squareCell gridCell" data-row="r2" data-col="c3"> </div>
+                        <div class="div26 squareCell gridCell border-right-dark" data-row="r2" data-col="c4"> </div>
+                        <div class="div27 squareCell gridCell" data-row="r10" data-col="c9"> </div>
+                        <div class="div28 squareCell gridCell" data-row="r10" data-col="c10"> </div>
+                        <div class="div29 squareCell gridCell" data-row="r10" data-col="c11"> </div>
+                        <div class="div30 squareCell gridCell border-right-dark" data-row="r10" data-col="c12"> </div>
+                        <div class="div31 squareCell "> </div>
+                        <div class="div32 squareCell gridCell border-left-dark" data-row="r3" data-col="c1"> </div>
+                        <div class="div33 squareCell gridCell" data-row="r3" data-col="c2"> </div>
+                        <div class="div34 squareCell gridCell" data-row="r3" data-col="c3"> </div>
+                        <div class="div35 squareCell gridCell border-right-dark" data-row="r3" data-col="c4"> </div>
+                        <div class="div36 squareCell gridCell" data-row="r11" data-col="c9"> </div>
+                        <div class="div37 squareCell gridCell" data-row="r11" data-col="c10"> </div>
+                        <div class="div38 squareCell gridCell" data-row="r11" data-col="c11"> </div>
+                        <div class="div39 squareCell gridCell  border-right-dark" data-row="r11" data-col="c12"> </div>
+                        <div class="div40 squareCell "> </div>
+                        <div class="div41 squareCell gridCell border-bottom-dark border-left-dark" data-row="r4"
+                            data-col="c1">
+                        </div>
+                        <div class="div42 squareCell gridCell border-bottom-dark" data-row="r4" data-col="c2"> </div>
+                        <div class="div43 squareCell gridCell border-bottom-dark" data-row="r4" data-col="c3"> </div>
+                        <div class="div44 squareCell gridCell border-bottom-dark border-right-dark" data-row="r4"
+                            data-col="c4">
+
+                        </div>
+                        <div class="div45 squareCell gridCell border-bottom-dark" data-row="r12" data-col="c9"> </div>
+                        <div class="div46 squareCell gridCell border-bottom-dark" data-row="r12" data-col="c10"> </div>
+                        <div class="div47 squareCell gridCell border-bottom-dark" data-row="r12" data-col="c11"> </div>
+                        <div class="div48 squareCell gridCell border-bottom-dark border-right-dark" data-row="r12"
+                            data-col="c12">
+                        </div>
+                        <div class="div49 squareCell "> </div>
+                        <div class="div50 squareCell gridCell border-left-dark" data-row="r5" data-col="c5"> </div>
+                        <div class="div51 squareCell gridCell" data-row="r5" data-col="c6"> </div>
+                        <div class="div52 squareCell gridCell" data-row="r5" data-col="c7"> </div>
+                        <div class="div53 squareCell gridCell  border-right-dark" data-row="r5" data-col="c8"> </div>
+                        <div class="div54 squareCell "> </div>
+                        <div class="div55 squareCell gridCell border-left-dark" data-row="r6" data-col="c5"> </div>
+                        <div class="div56 squareCell gridCell" data-row="r6" data-col="c6"> </div>
+                        <div class="div57 squareCell gridCell" data-row="r6" data-col="c7"> </div>
+                        <div class="div58 squareCell gridCell border-right-dark" data-row="r6" data-col="c8"> </div>
+                        <div class="div59 squareCell"> </div>
+                        <div class="div60 squareCell gridCell border-left-dark" data-row="r7" data-col="c5"> </div>
+                        <div class="div61 squareCell gridCell" data-row="r7" data-col="c6"> </div>
+                        <div class="div62 squareCell gridCell" data-row="r7" data-col="c7"> </div>
+                        <div class="div63 squareCell gridCell border-right-dark" data-row="r7" data-col="c8"> </div>
+                        <div class="div64 squareCell"> </div>
+                        <div class="div65 squareCell gridCell border-bottom-dark border-left-dark" data-row="r8"
+                            data-col="c5">
+                        </div>
+                        <div class="div66 squareCell gridCell border-bottom-dark" data-row="r8" data-col="c6"> </div>
+                        <div class="div67 squareCell gridCell border-bottom-dark" data-row="r8" data-col="c7"> </div>
+                        <div class="div68 squareCell gridCell border-bottom-dark border-right-dark" data-row="r8"
+                            data-col="c8">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-       
-            <ul class="nav nav-tabs nav-fill">
-                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#suspects">Suspects</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#weapons">Weapons</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#locations">Locations</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#solve">Solve The Puzzle</a></li>
-              </ul>
-           
-            
-
-            
-        
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-              <h3>HOME</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div id="suspects" class="tab-pane fade">
-              <h3>Suspects</h3>
-              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div id="weapons" class="tab-pane fade">
-                <h3>Weapons</h3>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              </div>
-            <div id="locations" class="tab-pane fade">
-              <h3>Locations</h3>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-            </div>
-            <div id="solve" class="tab-pane fade">
-              <h3>Solve The Puzzle</h3>
-              <p><div id="solveInputs">
-                <label for="suspectInput">Suspect:</label>
-                <input type="text" id="suspectInput" />
-                <label for="weaponInput">Weapon:</label>
-                <input type="text" id="weaponInput" />
-                <label for="locationInput">Location:</label>
-                <input type="text" id="locationInput" />
-                <button onclick="solvePuzzle()">Submit Solution</button>
-            </div></p>
-            </div>
-          </div>
-        
-        <button onclick="getClue()">Get a Clue</button>
-        <div id="output"></div>
-        <div class="gridParent">
-            <div class="div1 horizontal-label text-secondary"> Suspects </div>
-            <div class="div2 horizontal-label text-secondary"> Locations </div>
-            <div class="div3 vertical-label text-secondary"> Weapons </div>
-            <div class="div4 vertical-label text-secondary"> Locations </div>
-            <div class="div5 squareCell"> A</div>
-            <div class="div6 squareCell"> B</div>
-            <div class="div7 squareCell"> C</div>
-            <div class="div8 squareCell"> D</div>
-            <div class=" div9 squareCell "> </div>
-            <div class="div10 squareCell "> </div>
-            <div class="div11 squareCell "> </div>
-            <div class="div12 squareCell "> </div>
-            <div class="div13 squareCell "> </div>
-            <div class="div14 squareCell gridCell"> </div>
-            <div class="div15 squareCell gridCell"> </div>
-            <div class="div16 squareCell gridCell"> </div>
-            <div class="div17 squareCell gridCell"> </div>
-            <div class="div18 squareCell gridCell"> </div>
-            <div class="div19 squareCell gridCell"> </div>
-            <div class="div20 squareCell gridCell"> </div>
-            <div class="div21 squareCell gridCell"> </div>
-            <div class="div22 squareCell "> </div>
-            <div class="div23 squareCell gridCell"> </div>
-            <div class="div24 squareCell gridCell"> </div>
-            <div class="div25 squareCell gridCell"> </div>
-            <div class="div26 squareCell gridCell"> </div>
-            <div class="div27 squareCell gridCell"> </div>
-            <div class="div28 squareCell gridCell"> </div>
-            <div class="div29 squareCell gridCell"> </div>
-            <div class="div30 squareCell gridCell"> </div>
-            <div class="div31 squareCell "> </div>
-            <div class="div32 squareCell gridCell"> </div>
-            <div class="div33 squareCell gridCell"> </div>
-            <div class="div34 squareCell gridCell"> </div>
-            <div class="div35 squareCell gridCell"> </div>
-            <div class="div36 squareCell gridCell"> </div>
-            <div class="div37 squareCell gridCell"> </div>
-            <div class="div38 squareCell gridCell"> </div>
-            <div class="div39 squareCell gridCell"> </div>
-            <div class="div40 squareCell "> </div>
-            <div class="div41 squareCell gridCell"> </div>
-            <div class="div42 squareCell gridCell"> </div>
-            <div class="div43 squareCell gridCell"> </div>
-            <div class="div44 squareCell gridCell"> </div>
-            <div class="div45 squareCell gridCell"> </div>
-            <div class="div46 squareCell gridCell"> </div>
-            <div class="div47 squareCell gridCell"> </div>
-            <div class="div48 squareCell gridCell"> </div>
-            <div class="div49 squareCell "> </div>
-            <div class="div50 squareCell gridCell"> </div>
-            <div class="div51 squareCell gridCell"> </div>
-            <div class="div52 squareCell gridCell"> </div>
-            <div class="div53 squareCell gridCell"> </div>
-            <div class="div54 squareCell "> </div>
-            <div class="div55 squareCell gridCell"> </div>
-            <div class="div56 squareCell gridCell"> </div>
-            <div class="div57 squareCell gridCell"> </div>
-            <div class="div58 squareCell gridCell"> </div>
-            <div class="div59 squareCell"> </div>
-            <div class="div60 squareCell gridCell"> </div>
-            <div class="div61 squareCell gridCell"> </div>
-            <div class="div62 squareCell gridCell"> </div>
-            <div class="div63 squareCell gridCell"> </div>
-            <div class="div64 squareCell"> </div>
-            <div class="div65 squareCell gridCell"> </div>
-            <div class="div66 squareCell gridCell"> </div>
-            <div class="div67 squareCell gridCell"> </div>
-            <div class="div68 squareCell gridCell"> </div>
-            </div>
-
-    </div>
     </div>
 </body>
 
