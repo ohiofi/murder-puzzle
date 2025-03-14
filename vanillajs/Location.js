@@ -454,25 +454,25 @@ const locationList = [
                 },
                 {
                   name: "Trail",
-                  items: ["Backpack", "Walking Stick", "Water Bottle", "Signpost"],
+                  items: ["Backpack", "Walking Stick", "Water Bottle", "Signpost","Map"],
                   isOutdoors: true,
                   temperature: "Warm"
                 },
                 {
                   name: "Train Station",
-                  items: ["Luggage", "Train Ticket", "Bench"],
+                  items: ["Luggage", "Ticket Stub", "Bench"],
                   isOutdoors: true,
                   temperature: "Warm"
                 },
                 {
                   name: "University",
-                  items: ["Textbook", "Laptop", "Notebook"],
+                  items: ["Textbook", "Laptop", "Notebook","Desk","Folding Chair"],
                   isOutdoors: false,
                   temperature: "Cool"
                 },
                 {
                   name: "Valley",
-                  items: ["Hiking Boots", "Compass", "Binoculars"],
+                  items: ["Hiking Boots", "Compass", "Binoculars","Map","Signpost"],
                   isOutdoors: true,
                   temperature: "Warm"
                 },
@@ -484,25 +484,19 @@ const locationList = [
                 },
                 {
                   name: "Warehouse",
-                  items: ["Clipboard", "Flashlight", "Wrench", "Shipping Box"],
-                  isOutdoors: false,
-                  temperature: "Warm"
-                },
-                {
-                  name: "Warehouse",
-                  items: ["Packing Tape", "Shipping Label", "Barcode Scanner"],
+                  items: ["Clipboard", "Flashlight", "Wrench", "Shipping Box","Packing Tape", "Shipping Label", "Barcode Scanner"],
                   isOutdoors: false,
                   temperature: "Warm"
                 },
                 {
                   name: "Warm Springs",
-                  items: ["Towel", "Bathrobe", "Water Bottle"],
+                  items: ["Towel", "Bathrobe", "Water Bottle","Coin"],
                   isOutdoors: true,
                   temperature: "Hot"
                 },
                 {
                   name: "Waterfall",
-                  items: ["Camera", "Rain Poncho", "Mossy Rock"],
+                  items: ["Camera", "Rain Poncho", "Mossy Rock","Map"],
                   isOutdoors: true,
                   temperature: "Cold"
                 }
