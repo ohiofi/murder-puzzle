@@ -1,55 +1,55 @@
 const locationList = [
         {
           name: "Airport",
-          items: ["Luggage", "Boarding Pass", "Security Scanner"],
+          items: ["Boarding Pass", "Luggage Tag", "Pillow", "Headphones", "Passport", "Suitcase", "Postcard"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Apartment Complex",
-          items: ["Mailboxes", "Elevator", "Intercom"],
+          items: ["Rusty Key", "Rent Notice", "Door Mat", "Frisbee", "Nameplate"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Attic",
-          items: ["Old Boxes", "Cobwebs", "Trunk"],
+          items: ["Old Boxes", "Cobwebs", "Trunk", "Rusty Nail", "Mousetrap"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Bank",
-          items: ["ATM", "Teller Window", "Vault"],
+          items: ["ATM", "Teller Window", "Vault","Receipt", "Deposit Slip", "Checkbook", "Coin", "Pen"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Basement",
-          items: ["Furnace", "Storage Shelves", "Old Furniture"],
+          items: ["Cobweb", "Rusty Nail", "Dusty Box", "Lightbulb", "Rusty Key"],
           isOutdoors: false,
           temperature: "Cold"
         },
         {
           name: "Bathroom",
-          items: ["Shower", "Mirror", "Toilet"],
+          items: ["Toothbrush", "Soap Bar", "Cotton Swab", "Hairpin", "Toothpaste"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Beach",
-          items: ["Sand", "Umbrella", "Waves"],
+          items: ["Seashell", "Driftwood", "Pebble", "Sunscreen Packet", "Bottle Cap","Umbrella", "Seagull", "Crab"],
           isOutdoors: true,
           temperature: "Hot"
         },
         {
           name: "Bedroom",
-          items: ["Bed", "Nightstand", "Closet"],
+          items: ["Bookmark", "Pillow", "Alarm Clock Battery", "Lip Balm", "Pair of Socks","Bed", "Nightstand"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Bistro",
-          items: ["Small Tables", "Wine Glasses", "Cheese Platter"],
+          items: ["Sugar Packet", "Napkin", "Cork", "Butter Knife", "Menu", "Small Tables", "Wine Glasses", "Cheese Platter"],
           isOutdoors: false,
           temperature: "Warm"
         },
@@ -193,13 +193,13 @@ const locationList = [
         },
         {
           name: "Forest",
-          items: ["Pinecone", "Acorn", "Mushroom"],
+          items: ["Pinecone", "Acorn", "Mushroom","Feather","Twig"],
           isOutdoors: true,
           temperature: "Warm"
         },
         {
           name: "Garage",
-          items: ["Wrench", "Oil Rag", "Flashlight", "Toolbox", "Workbench"],
+          items: ["Wrench", "Oil Rag", "Flashlight", "Toolbox", "Workbench", "Lighter"],
           isOutdoors: false,
           temperature: "Warm"
         },
@@ -211,31 +211,31 @@ const locationList = [
         },
         {
           name: "Gas Station",
-          items: ["Receipt", "Air Gauge", "Energy Drink"],
+          items: ["Receipt", "Air Gauge", "Energy Drink", "Wrench", "Oil Rag", "Flashlight"],
           isOutdoors: true,
           temperature: "Warm"
         },
         {
           name: "Gym",
-          items: ["Jump Rope", "Water Bottle", "Sweatband", "Backpack"],
+          items: ["Jump Rope", "Water Bottle", "Sweatband", "Backpack", "Towel"],
           isOutdoors: false,
           temperature: "Warm"
         },
         {
           name: "Hallway",
-          items: ["Keychain", "Notebook", "Pen"],
+          items: ["Keychain", "Notebook", "Pen", "Lanyard", "Postcard"],
           isOutdoors: false,
           temperature: "Cool"
         },
         {
           name: "High School",
-          items: ["Textbook", "Pencil", "Desk", "Notebook", "Backpack"],
+          items: ["Textbook", "Pencil", "Desk", "Notebook", "Backpack", "Ruler", "Compass"],
           isOutdoors: false,
           temperature: "Cool"
         },
         {
           name: "Hilltop",
-          items: ["Leaf", "Feather", "Smooth Stone"],
+          items: ["Leaf", "Feather", "Smooth Stone", "Acorn","Pebble"],
           isOutdoors: true,
           temperature: "Cold"
         },
@@ -259,188 +259,182 @@ const locationList = [
         },
         {
           name: "Lake",
-          items: ["Skipping Stone", "Fishing Bobber", "Duck Feather","Lilypad", "Tackle Box"],
+          items: ["Skipping Stone", "Fishing Pole", "Duck Feather","Lilypad", "Tackle Box"],
           isOutdoors: true,
           temperature: "Cold"
         },
 
             {
               name: "Laundromat",
-              items: ["Detergent Bottle", "Coin", "Clothespin"],
+              items: ["Detergent Bottle", "Coin", "Clothespin", "Flyer", "Lost Sock", "Dryer Sheet"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Library",
-              items: ["Bookmark", "Notebook", "Reading Glasses"],
+              items: ["Bookmark", "Notebook", "Reading Glasses", "Library Card", "Pencil"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Living Room",
-              items: ["Remote Control", "Throw Pillow", "Magazine","Sofa", "Coffee Table", "Television"],
+              items: ["Remote Control", "Throw Pillow", "Magazine","Sofa", "Coffee Table", "Television","Coaster"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Market",
-              items: ["Apple", "Cloth Bag", "Jar of Honey"],
+              items: ["Apple", "Cloth Bag", "Jar of Honey","Receipt", "Bundle of Herbs"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Marsh",
-              items: ["Reed", "Pebble", "Snail Shell", "Frogs","Signpost"],
+              items: ["Reed", "Pebble", "Snail Shell", "Frog","Signpost", "Lilypad"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Meadow",
-              items: ["Daisy", "Feather", "Butterfly","Wildflower"],
+              items: ["Daisy", "Feather", "Butterfly","Wildflower", "Twig"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Mountain",
-              items: ["Pinecone", "Small Rock", "Scarf","Signpost"],
+              items: ["Pinecone", "Small Rock", "Scarf","Signpost", "Acorn"],
               isOutdoors: true,
               temperature: "Cold"
             },
             {
               name: "Museum",
-              items: ["Ticket Stub", "Postcard", "Brochure"],
+              items: ["Ticket Stub", "Postcard", "Brochure", "Guidebook", "Coin"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Office",
-              items: ["Pen", "Sticky Note", "Paper Clip"],
+              items: ["Pen", "Sticky Note", "Paper Clip", "Stapler", "USB Drive", "Newspaper"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Orchard",
-              items: ["Apple", "Basket", "Leaf"],
+              items: ["Apple", "Basket", "Leaf", "Twig", "Peach"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Pantry",
-              items: ["Jar of Peanut Butter", "Packet of Pasta", "Salt Shaker"],
+              items: ["Jar of Peanut Butter", "Packet of Pasta", "Salt Shaker", "Tea Bag", "Granola Bar"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Park",
-              items: ["Frisbee", "Water Bottle", "Notebook", "Bench","Signpost"],
+              items: ["Frisbee", "Water Bottle", "Notebook", "Bench","Signpost","Leaf","Acorn","Squirrel"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Parking Garage",
-              items: ["Car Key", "Parking Ticket", "Flashlight"],
+              items: ["Key Fob", "Ticket Stub", "Flashlight", "Coin", "Receipt"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Pharmacy",
-              items: ["Pill Bottle", "Bandages", "Thermometer"],
+              items: ["Pill Bottle", "Bandages", "Thermometer", "Cotton Swab", "Cough Drop"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Pier",
-              items: ["Fishing Hook", "Seashell", "Rope", "Wooden Plank", "Fishing Pole", "Seagull"],
+              items: ["Seashell", "Rope", "Wooden Plank", "Fishing Pole", "Seagull"],
               isOutdoors: true,
               temperature: "Cold"
             },
             {
               name: "Pizzeria",
-              items: ["Pizza Cutter", "Napkin", "Box of Pizza"],
+              items: ["Pizza Cutter", "Napkin", "Box of Pizza", "Menu", "Salt Packet"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Police Station",
-              items: ["Handcuffs", "Notepad", "Badge"],
+              items: ["Handcuffs", "Notepad", "Badge", "Whistle", "Pen"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Post Office",
-              items: ["Envelope", "Stamp", "Packing Tape"],
+              items: ["Envelope", "Stamp", "Packing Tape", "Whistle", "Pen"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Power Plant",
-              items: ["Wrench", "Safety Goggles", "Clipboard"],
+              items: ["Wrench", "Safety Goggles", "Clipboard", "Gloves", "Flashlight"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Restaurant",
-              items: ["Fork", "Menu", "Salt Shaker","Table", "Waiter"],
+              items: ["Fork", "Menu", "Salt Shaker","Table", "Waiter", "Napkin", "Receipt"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Riverbank",
-              items: ["Skipping Stone", "Fishing Hook", "Leaf", "Pebble", "Duck"],
+              items: ["Skipping Stone", "Fishing Pole", "Leaf", "Pebble", "Duck", "Pebble", "Feather"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Ruins",
-              items: ["Broken Brick", "Old Coin", "Carved Stone"],
+              items: ["Broken Brick", "Coin", "Carved Stone", "Fragment of Pottery", "Rusty Nail"],
               isOutdoors: true,
               temperature: "Cold"
             },
             {
-              name: "School",
-              items: ["Pencil", "Notebook", "Eraser", "Locker"],
-              isOutdoors: false,
-              temperature: "Warm"
-            },
-            {
               name: "Shopping Mall",
-              items: ["Receipt", "Gift Card", "Shopping Bag"],
+              items: ["Receipt", "Gift Card", "Shopping Bag", "Coupon", "Keychain"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Skyscraper",
-              items: ["Keycard", "Business Card", "Notebook", "Sticky Note"],
+              items: ["Keycard", "Business Card", "Notebook", "Sticky Note", "Newspaper"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Stadium",
-              items: ["Ticket Stub", "Foam Finger", "Whistle"],
+              items: ["Ticket Stub", "Foam Finger", "Whistle", "Plastic Cup", "Confetti"],
               isOutdoors: true,
               temperature: "Warm"
             },
             {
               name: "Steakhouse",
-              items: ["Steak Knife", "Menu", "Salt Shaker"],
+              items: ["Steak Knife", "Menu", "Salt Shaker", "Napkin", "Toothpick"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Supermarket",
-              items: ["Grocery Bag", "Barcode Scanner", "Coupon"],
+              items: ["Grocery Bag", "Barcode Scanner", "Coupon", "Receipt", "Apple", "Peach", "Shopping List"],
               isOutdoors: false,
               temperature: "Cool"
             },
             {
               name: "Sushi Bar",
-              items: ["Sushi Roll", "Soy Sauce Packet", "Chopsticks"],
+              items: ["Sushi Roll", "Soy Sauce Packet", "Chopsticks", "Ginger Slice", "Napkin"],
               isOutdoors: false,
               temperature: "Warm"
             },
             {
               name: "Swamp",
-              items: ["Moss", "Small Frog", "Feather"],
+              items: ["Moss", "Frog", "Feather", "Reed", "Pebble"],
               isOutdoors: true,
               temperature: "Warm"
             },
@@ -448,19 +442,19 @@ const locationList = [
 
                 {
                   name: "Theater",
-                  items: ["Prop Sword", "Spotlight", "Foldable Chair"],
+                  items: ["Playbill", "Mask", "Ticket Stub", "Feather Quill", "Script","Prop Sword", "Spotlight", "Foldable Chair"],
                   isOutdoors: false,
                   temperature: "Cool"
                 },
                 {
                   name: "Trail",
-                  items: ["Backpack", "Walking Stick", "Water Bottle", "Signpost","Map"],
+                  items: ["Leaf", "Pebble", "Compass", "Feather","Backpack", "Walking Stick", "Water Bottle", "Signpost","Map"],
                   isOutdoors: true,
                   temperature: "Warm"
                 },
                 {
                   name: "Train Station",
-                  items: ["Luggage", "Ticket Stub", "Bench"],
+                  items: ["Ticket Stub", "Luggage Tag", "Coin", "Map", "Postcard", "Luggage", "Bench"],
                   isOutdoors: true,
                   temperature: "Warm"
                 },
@@ -478,7 +472,7 @@ const locationList = [
                 },
                 {
                   name: "Vineyard",
-                  items: ["Basket", "Wine Bottle", "Pruning Shears"],
+                  items: ["Grape", "Wine Cork", "Leaf", "Tasting Spoon", "Bottle","Basket", "Wine Glass", "Pruning Shears"],
                   isOutdoors: true,
                   temperature: "Warm"
                 },
@@ -490,13 +484,13 @@ const locationList = [
                 },
                 {
                   name: "Warm Springs",
-                  items: ["Towel", "Bathrobe", "Water Bottle","Coin"],
+                  items: ["Towel", "Bathrobe", "Water Bottle","Coin","Socks"],
                   isOutdoors: true,
                   temperature: "Hot"
                 },
                 {
                   name: "Waterfall",
-                  items: ["Camera", "Rain Poncho", "Mossy Rock","Map"],
+                  items: ["Camera", "Rain Poncho", "Mossy Rock","Map","Feather"],
                   isOutdoors: true,
                   temperature: "Cold"
                 }
