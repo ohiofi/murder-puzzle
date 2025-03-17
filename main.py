@@ -198,8 +198,12 @@ def main():
     play_game(seed)
 
 # Set up the game
-# if __name__ == "__main__":
-#     main()
+from colorama import *
+
+if __name__ == "__main__":
+    init()
+    print(Fore.BLACK,Back.GREEN)
+    main()
 
 
 # suspects = ["Alice", "Bob", "Charlie"]
