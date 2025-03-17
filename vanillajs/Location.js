@@ -1,4 +1,4 @@
-const locationList = [
+const possibleLocations = [
         {
           name: "Airport",
           items: ["Boarding Pass", "Luggage Tag", "Pillow", "Headphones", "Passport", "Suitcase", "Postcard"],
