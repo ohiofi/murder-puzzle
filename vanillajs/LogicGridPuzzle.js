@@ -2,26 +2,37 @@ class LogicGridPuzzle {
     constructor(dateObject) {
         this.date = dateObject;
         let daysSinceEpoch = Math.floor((this.date - new Date().getTimezoneOffset()) / (60 * 60 * 24 * 1000));
-        this.suspects = ["Alice", "Bob", "Carol", "Eddie"];
-        this.weapons = ["Dagger", "Gun", "Rope", "Knife"];
-        this.locations = ["Store", "Library", "Theater", "Museum"];
-        this.solution = this.generateSolution(daysSinceEpoch);
+        this.rng = new Math.seedrandom(daysSinceEpoch);
+        //this.suspects = ["A","B","C","D"]
+        
         this.clues = [];
         this.clueNumber = 1;
+        this.possiblePersonNames = [
+            ["Amy", "Alex", "Ava", "Allan", "Andy", "Abby", "Alex", "Amir", "Anya", "Aria", "Axel", "Aden", "Alia"],
+            ["Ben", "Bill", "Bob", "Beau", "Brad", "Bryn", "Bret", "Blake", "Basil", "Bodie","Beth","Betty","Barb","Beth"],
+            ["Cal", "Carl", "Cody", "Cory", "Clara", "Clay", "Cole", "Case", "Chet", "Chad", "Cara", "Cami", "Cleo", "Cali", "Cate", "Cori", "Cindy"],
+            ["Dan", "Dave", "Dale", "Dean", "Drew", "Dion", "Dane", "Davy",  "Dana", "Demi", "Dina", "Dora", "Dawn", "Dixie", "Dolly"],
+            ["Eli", "Evan", "Earl", "Eric", "Eddy", "Emma", "Ella", "Elsa", "Erin", "Eve", "Edie", "Emmy"],
+        ]
+        this.possibleEyeColors = ["brown","brown","brown","brown","blue","blue","hazel","green"];
+        this.suspects = this.generateSuspects();
+        this.weapons = ["Dagger", "Gun", "Rope", "Knife"];
+        this.locations = ["Store", "Library", "Theater", "Museum"];
+        this.solution = this.generateSolution();
     }
 
-    shuffleArray(array, seed) {
-        let rng = new Math.seedrandom(seed);
+    shuffleArray(array) {
+        
         for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(rng() * (i + 1));
+            const j = Math.floor(this.rng() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
 
-    generateSolution(seed) {
-        this.shuffleArray(this.suspects, seed);
-        this.shuffleArray(this.weapons, seed);
-        this.shuffleArray(this.locations, seed);
+    generateSolution() {
+        this.shuffleArray(this.suspects);
+        this.shuffleArray(this.weapons);
+        this.shuffleArray(this.locations);
 
         let solution = this.suspects.map((suspect, index) => ({
             suspect,
@@ -30,16 +41,30 @@ class LogicGridPuzzle {
             isMurderer: false
         }));
 
-        let murdererIndex = Math.floor(Math.random() * solution.length);
+        let murdererIndex = Math.floor(this.rng() * solution.length);
         solution[murdererIndex].isMurderer = true;
 
         return solution;
     }
 
+    generateSuspects(){
+        let result = [];
+        for(let i=0;i<4;i++){
+            let row = Math.floor(this.rng() * this.possiblePersonNames.length);
+            let col = Math.floor(this.rng() * this.possiblePersonNames[row].length);
+            let sus = new Person(this.possiblePersonNames[row][col], this.possibleEyeColors[ Math.floor(this.rng() * this.possibleEyeColors.length)]);
+            this.possiblePersonNames.splice(row, 1); // delete that entire row of names
+            sus.isRightHanded = (i < 2);
+            sus.isTall = (i % 2 == 0);
+            result.push(sus);
+        }
+        return result;
+    }
+
     getDirectClue() {
         let clue = {};
-        let category = ["suspect/location", "suspect/weapon", "weapon/location", "murderer"][Math.floor(Math.random() * 4)];
-        let selected = this.solution[Math.floor(Math.random() * this.solution.length)];
+        let category = ["suspect/location", "suspect/weapon", "weapon/location", "murderer"][Math.floor(this.rng() * 4)];
+        let selected = this.solution[Math.floor(this.rng() * this.solution.length)];
 
         switch (category) {
             case "suspect/location":
@@ -65,25 +90,25 @@ class LogicGridPuzzle {
 
     getIndirectClue() {
         let clue = {};
-        let category = ["suspect/location", "suspect/weapon", "weapon/location", "murderer"][Math.floor(Math.random() * 4)];
-        let selected = this.solution[Math.floor(Math.random() * this.solution.length)];
+        let category = ["suspect/location", "suspect/weapon", "weapon/location", "murderer"][Math.floor(this.rng() * 4)];
+        let selected = this.solution[Math.floor(this.rng() * this.solution.length)];
 
         switch (category) {
             case "suspect/location":
                 let otherLocations = this.locations.filter(loc => loc !== selected.location);
-                let location = otherLocations[Math.floor(Math.random() * otherLocations.length)];
+                let location = otherLocations[Math.floor(this.rng() * otherLocations.length)];
                 clue.text = `${selected.suspect} was NOT at the ${location}.`;
                 clue.details = [selected.suspect, `not ${location}`];
                 break;
             case "suspect/weapon":
                 let otherWeapons = this.weapons.filter(wpn => wpn !== selected.weapon);
-                let weapon = otherWeapons[Math.floor(Math.random() * otherWeapons.length)];
+                let weapon = otherWeapons[Math.floor(this.rng() * otherWeapons.length)];
                 clue.text = `${selected.suspect} did NOT have the ${weapon}.`;
                 clue.details = [selected.suspect, `not ${weapon}`];
                 break;
             case "weapon/location":
                 let otherLocs = this.locations.filter(loc => loc !== selected.location);
-                let wrongLocation = otherLocs[Math.floor(Math.random() * otherLocs.length)];
+                let wrongLocation = otherLocs[Math.floor(this.rng() * otherLocs.length)];
                 clue.text = `The ${selected.weapon} was NOT found at the ${wrongLocation}.`;
                 clue.details = [selected.weapon, `not ${wrongLocation}`];
                 break;
@@ -97,7 +122,7 @@ class LogicGridPuzzle {
     }
 
     generateClue() {
-        return Math.random() < 1 / 15 * this.clueNumber ? this.getDirectClue() : this.getIndirectClue();
+        return this.rng() < 1 / 15 * this.clueNumber ? this.getDirectClue() : this.getIndirectClue();
     }
 
     playGame() {
