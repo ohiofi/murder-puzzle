@@ -4,17 +4,8 @@ class LogicGridPuzzle {
         let daysSinceEpoch = Math.floor((this.date - new Date().getTimezoneOffset()) / (60 * 60 * 24 * 1000));
         this.rng = new Math.seedrandom(daysSinceEpoch);
         //this.suspects = ["A","B","C","D"]
-        
         this.clues = [];
         this.clueNumber = 1;
-        this.possiblePersonNames = [
-            ["Amy", "Alex", "Ava", "Allan", "Andy", "Abby", "Alex", "Amir", "Anya", "Aria", "Axel", "Aden", "Alia"],
-            ["Ben", "Bill", "Bob", "Beau", "Brad", "Bryn", "Bret", "Blake", "Basil", "Bodie","Beth","Betty","Barb","Beth"],
-            ["Cal", "Carl", "Cody", "Cory", "Clara", "Clay", "Cole", "Case", "Chet", "Chad", "Cara", "Cami", "Cleo", "Cali", "Cate", "Cori", "Cindy"],
-            ["Dan", "Dave", "Dale", "Dean", "Drew", "Dion", "Dane", "Davy",  "Dana", "Demi", "Dina", "Dora", "Dawn", "Dixie", "Dolly"],
-            ["Eli", "Evan", "Earl", "Eric", "Eddy", "Emma", "Ella", "Elsa", "Erin", "Eve", "Edie", "Emmy"],
-        ]
-        this.possibleEyeColors = ["brown","brown","brown","brown","blue","blue","hazel","green"];
         this.suspects = this.generateSuspects();
         this.weapons = ["Dagger", "Gun", "Rope", "Knife"];
         this.locations = ["Store", "Library", "Theater", "Museum"];
@@ -47,16 +38,29 @@ class LogicGridPuzzle {
         return solution;
     }
 
-    generateSuspects(){
+    generateLocations(){
+        let personGenerator = new PersonGenerator();
         let result = [];
         for(let i=0;i<4;i++){
-            let row = Math.floor(this.rng() * this.possiblePersonNames.length);
-            let col = Math.floor(this.rng() * this.possiblePersonNames[row].length);
-            let sus = new Person(this.possiblePersonNames[row][col], this.possibleEyeColors[ Math.floor(this.rng() * this.possibleEyeColors.length)]);
-            this.possiblePersonNames.splice(row, 1); // delete that entire row of names
-            sus.isRightHanded = (i < 2);
-            sus.isTall = (i % 2 == 0);
-            result.push(sus);
+            result.push(personGenerator.getPerson())
+        }
+        return result;
+    }
+
+    generateSuspects(){
+        let personGenerator = new PersonGenerator();
+        let result = [];
+        for(let i=0;i<4;i++){
+            result.push(personGenerator.getPerson())
+        }
+        return result;
+    }
+
+    generateWeapons(){
+        let personGenerator = new PersonGenerator();
+        let result = [];
+        for(let i=0;i<4;i++){
+            result.push(personGenerator.getPerson())
         }
         return result;
     }
