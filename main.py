@@ -197,13 +197,46 @@ def main():
     seed = int(input("Enter a seed number for the puzzle: "))
     play_game(seed)
 
-# Set up the game
-from colorama import *
+# # Set up the game
+# from colorama import *
 
-if __name__ == "__main__":
-    init()
-    print(Fore.BLACK,Back.GREEN)
-    main()
+
+
+
+import pygame
+import math
+pygame.init()
+screen = pygame.display.set_mode((400, 300))
+done = False
+white=(255,255,255)
+red = (255,0,0)
+green = (0,255,0)
+blue = (0,0,255)
+textY = 150
+bg = (127,127,255) 
+clock = pygame.time.Clock()
+font = pygame.font.SysFont("Arial", 36)
+txtsurf = font.render("Hello, World", True, white)
+while not done:
+    
+    clock.tick()
+    screen.fill(bg)
+    screen.blit(txtsurf,(math.cos(pygame.time.get_ticks() *0.0015)*100+200 - txtsurf.get_width() // 2, math.sin(pygame.time.get_ticks() *0.0019)*100+150 - txtsurf.get_height() // 2))
+    screen.blit(txtsurf,(math.cos(pygame.time.get_ticks() *0.0013)*200+200 - txtsurf.get_width() // 2, math.sin(pygame.time.get_ticks() *0.001)*150+150 - txtsurf.get_height() // 2))
+    pygame.display.update()
+    for event in pygame.event.get():
+      
+      if event.type == pygame.QUIT:
+         done = True
+      
+   
+
+
+
+# if __name__ == "__main__":
+#     init()
+#     print(Fore.BLACK,Back.GREEN)
+#     main()
 
 
 # suspects = ["Alice", "Bob", "Charlie"]
