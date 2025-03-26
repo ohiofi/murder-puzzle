@@ -1,5 +1,6 @@
 class LocationGenerator{
-    constructor(){
+    constructor(rng){
+        this.rng = rng;
         this.possibleLocations = [
             {
                 name: "Airport",

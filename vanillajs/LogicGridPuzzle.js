@@ -39,7 +39,7 @@ class LogicGridPuzzle {
     }
 
     generateLocations(){
-        let personGenerator = new PersonGenerator();
+        let personGenerator = new PersonGenerator(this.rng);
         let result = [];
         for(let i=0;i<4;i++){
             result.push(personGenerator.getPerson())
@@ -48,7 +48,7 @@ class LogicGridPuzzle {
     }
 
     generateSuspects(){
-        let personGenerator = new PersonGenerator();
+        let personGenerator = new PersonGenerator(this.rng);
         let result = [];
         for(let i=0;i<4;i++){
             result.push(personGenerator.getPerson())
@@ -57,7 +57,7 @@ class LogicGridPuzzle {
     }
 
     generateWeapons(){
-        let personGenerator = new PersonGenerator();
+        let personGenerator = new PersonGenerator(this.rng);
         let result = [];
         for(let i=0;i<4;i++){
             result.push(personGenerator.getPerson())

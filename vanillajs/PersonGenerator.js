@@ -1,5 +1,6 @@
 class PersonGenerator{
-    constructor(){
+    constructor(rng){
+        this.rng = rng;
         this.possiblePersonNames = [
             ["Amy", "Alex", "Ava", "Allan", "Andy", "Abby", "Alex", "Amir", "Anya", "Aria", "Axel", "Aden", "Alia"],
             ["Ben", "Bill", "Bob", "Beau", "Brad", "Bryn", "Bret", "Blake", "Basil", "Bodie","Beth","Betty","Barb","Beth"],
@@ -15,8 +16,8 @@ class PersonGenerator{
         let col = Math.floor(this.rng() * this.possiblePersonNames[row].length);
         let sus = new Person(this.possiblePersonNames[row][col], this.possibleEyeColors[ Math.floor(this.rng() * this.possibleEyeColors.length)]);
         this.possiblePersonNames.splice(row, 1); // delete that entire row of names
-        sus.isRightHanded = (i < 2);
-        sus.isTall = (i % 2 == 0);
+        sus.isRightHanded = ((row + col) % 4 < 2);
+        sus.isTall = ((row + col) % 2 == 0);
         return sus;
     }
 }

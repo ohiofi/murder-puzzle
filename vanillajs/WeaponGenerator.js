@@ -1,5 +1,6 @@
 class WeaponGenerator{
-    constructor(){
+    constructor(rng){
+        this.rng = rng;
         this.possibleWeapons = [
             {
                 "name":"Dagger",
